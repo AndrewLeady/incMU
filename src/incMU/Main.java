@@ -1,10 +1,11 @@
 package incMU;
 
 import java.sql.*;
-import java.net.Socket;
 import java.net.ServerSocket;
 
 public class Main {
+	
+	int openID = 0;
 	
 	private void Parse() {
 		//partial match logic, compare noun to start of string or after each space
