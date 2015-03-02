@@ -26,11 +26,11 @@ public class Entity {
 	}
 	
 	public boolean enter (int containerID) {
-		if (/*containerID exists and can pick this up*/) {
+		if (!(this.imobile) && (Main.entities.get(containerID))!= null ) {
 			locationID = containerID;
 			Main.entities.get(containerID).contains.add(entityID);
-			return 1;
-		} else { return 0; }
+			return true;
+		} else { return false; }
 	}
 	
 	public String getDescription() {
@@ -41,6 +41,12 @@ public class Entity {
 		return entityID;
 	}
 	
+	private void parse() {
+		//partial match logic, compare noun to start of string or after each space
+	}
+	
+	public void dance() {
+		//TODO: AI, etc
+	}
 	//TODO: behavior methods
-	//TODO: brain methods
 }

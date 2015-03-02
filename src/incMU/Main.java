@@ -2,30 +2,45 @@ package incMU;
 
 import java.util.ArrayList;
 import java.sql.*;
+import java.io.IOException;
 import java.net.ServerSocket;
 
-class Ear extends Thread throws IOException {
-	
-	public void run() {
-	
-		boolean continueRunning = true;
-		ServerSocket ear = new ServerSocket(23);
-		while(continueRunning) {
-			new SocketBuffer ( ear.accept() );
-		}
-		ear.close();
-	}
-}
 
 public class Main {
 	
-	static boolean continueRunning = true;
+	class EarThread implements Runnable {
+		public void run() {
+		
+			boolean continueRunning = true;
+			ServerSocket ear;
+			try {
+				ear = new ServerSocket(23);
+				while(continueRunning) {
+					new SocketBuffer ( ear.accept() );
+				}
+				ear.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	class GameLoopThread implements Runnable {
+		public void run() {
+			
+			int cursor = -1;
+			
+			while (true) {
+				cursor = (cursor + 1) % Main.entities.size();
+				Main.entities.get( cursor ).dance();
+			}
+			
+		}
+	}
+	
 	static int openEntityID = -1;
 	static ArrayList<Entity> entities = new ArrayList<Entity>();
-	
-	private void Parse() {
-		//partial match logic, compare noun to start of string or after each space
-	}
 	
 	public static void main (String[] args) {
 		Connection database = DriveManager.getConnection(/*magic goes here*/);
