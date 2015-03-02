@@ -7,14 +7,14 @@ public class Entity {
 	int[][] skills = new int[5][2]; //[A,B,C,D,E][ID, XP]
 	LinkedList<Integer> contains = new LinkedList<Integer>();
 	LinkedList<Integer> behaves = new LinkedList<Integer>();
-	int brainID, locationID, entityID = Main.openEntityID();
+	int brainID, locationID, entityID = Main.availableEntityID();
 	boolean imobile;
 	String name, desc;
 	
-	public Entity (String desiredName, String desiredDesc, int location) {
+	public Entity (String desiredName, String desiredDesc, int ID, int location) {
 		name = desiredName;
 		desc = desiredDesc;
-		entityID = Main.openEntityID;
+		entityID = ID;
 		Main.entities.add( this );
 		enter(locationID);
 	}
@@ -39,10 +39,6 @@ public class Entity {
 	
 	public int getID() {
 		return entityID;
-	}
-	
-	private void parse() {
-		//partial match logic, compare noun to start of string or after each space
 	}
 	
 	public void dance() {

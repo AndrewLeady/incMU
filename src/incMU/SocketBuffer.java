@@ -1,21 +1,30 @@
 package incMU;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class SocketBuffer {
-
-	Socket socket;
-	LinkedList<Character> buffer = new LinkedList<Character>();
+	
+	try {
+		Socket socket;
+		BufferedReader buffer =
+				new BufferedReader( new InputStreamReader( socket.getInputStream() ));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	int rotation = 0, entityID, socketID;
 	boolean vowel;
 	
 	//TODO: take inputs
 	
 	public SocketBuffer (Socket purpose) {
-		new Entity( /*TODO*/ );
+		int temp = Main.availableEntityID();
+		new Entity( "Guest", "An unregistered character.", temp, Main.startingLocationID ); 
 		socket = purpose;
-		int temp = Main.openEntityID();
 		entityID = Main.entities.get( temp ).getID();
 		
 	}

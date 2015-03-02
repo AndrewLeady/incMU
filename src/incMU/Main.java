@@ -1,6 +1,7 @@
 package incMU;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.sql.*;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -39,21 +40,26 @@ public class Main {
 		}
 	}
 	
-	static int openEntityID = -1;
+	static int freshEntityID = -1, startingLocationID;
+	static LinkedList<Integer> recycledEntityIDs = new LinkedList<Integer>();
 	static ArrayList<Entity> entities = new ArrayList<Entity>();
+	Connection database = DriveManager.getConnection(/*magic goes here*/);
 	
 	public static void main (String[] args) {
-		Connection database = DriveManager.getConnection(/*magic goes here*/);
-		while (true) {
-			
-			//game goes here
-			//TODO: voodoo
-		}
+		
 	}
 	
-	public static int openEntityID () {
-		openEntityID++;
-		return openEntityID;
+	public static void loadEntity (int dbEntityID) {
+		//TODO: load from db
+	}
+	
+	public static int availableEntityID () {
+		if (recycledEntityIDs.getFirst() != null){
+			return recycledEntityIDs.removeLast();
+		} else {
+			freshEntityID++;
+			return freshEntityID;
+		}
 	}
 	
 	//TODO: SQL magicks
