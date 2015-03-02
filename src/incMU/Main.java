@@ -14,16 +14,9 @@ public class Main {
 		
 			boolean continueRunning = true;
 			ServerSocket ear;
-			try {
-				ear = new ServerSocket(23);
-				while(continueRunning) {
-					new SocketBuffer ( ear.accept() );
-				}
-				ear.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ear = new ServerSocket(23);
+			while(continueRunning) { new SocketBuffer ( ear.accept() ); }
+			ear.close();
 		}
 	}
 	
