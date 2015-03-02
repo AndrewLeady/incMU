@@ -5,11 +5,19 @@ import java.net.Socket;
 
 public class SocketBuffer {
 
+	Socket socket;
 	LinkedList<Character> buffer = new LinkedList<Character>();
-	int rotation = 0;
+	int rotation = 0, entityID, socketID;
 	boolean vowel;
 	
 	//TODO: take inputs
+	
+	public SocketBuffer (Socket purpose) {
+		Entity( openID() );
+		socket = purpose;
+		entityID = Entity.getID();
+		
+	}
 	
 	public LinkedList<Character> rotate () {
 		LinkedList<Character> rotated = new LinkedList<Character>();
@@ -28,3 +36,4 @@ public class SocketBuffer {
 	}
 	
 }
+

@@ -7,13 +7,12 @@ public class Entity {
 	int[][] skills = new int[5][2]; //[A,B,C,D,E][ID, XP]
 	LinkedList<Integer> contains = new LinkedList<Integer>();
 	LinkedList<Integer> behaves = new LinkedList<Integer>();
-	int brainID, locationID, entityID;
+	int brainID, locationID, entityID, socketID;
 	String desc;
 	String name;
 	
-	public int fromDatabase (int entityID) { //spawn Entity
+	public Entity (int entityID) {
 		//TODO
-		return entityID;
 	}
 	
 	public int setStat (int attribute, int type, int value) {
@@ -30,8 +29,12 @@ public class Entity {
 		} else { return 0; }
 	}
 	
-	public String readDescription() {
+	public String getDescription() {
 		return desc;
+	}
+	
+	public int getID() {
+		return entityID;
 	}
 	
 	//TODO: behavior methods
