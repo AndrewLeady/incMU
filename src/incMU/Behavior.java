@@ -1,10 +1,10 @@
 package incMU;
 
-import java.util.*;
+import java.util.LinkedList;
 
 public class Behavior {
 	
-	int BehaviorID;
+	int behaviorID;
 	LinkedList<Integer> attached = new LinkedList<Integer>(); //EntityIDs
 	//TODO: variables
 	

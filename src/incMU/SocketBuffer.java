@@ -13,9 +13,9 @@ public class SocketBuffer {
 	//TODO: take inputs
 	
 	public SocketBuffer (Socket purpose) {
-		Entity( openID() );
+		new Entity( /*TODO*/ );
 		socket = purpose;
-		entityID = Entity.getID();
+		entityID = Main.entities.get( temp ).getID();
 		
 	}
 	
